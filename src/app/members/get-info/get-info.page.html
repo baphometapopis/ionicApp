@@ -1,0 +1,35 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-title>Info of the task</ion-title>
+
+
+
+    <ion-icon name="close" slot="end" size="larger" class="ion-padding" (click)="dismis()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+    <ion-item>
+      <ion-label>Title:</ion-label>
+      <ion-item class="item-text-wrap">
+        {{Details.Name}}      </ion-item>
+    </ion-item>
+    <ion-item>   
+      
+      <ion-label>Description:</ion-label>
+      <ion-item >
+     </ion-item>
+      <ion-label class="ion-text-wrap">{{Details.Desc}}</ion-label>
+    </ion-item>
+  
+    <ion-item>  
+      <ion-label>Raised By:</ion-label>
+      <ion-label>{{Details.Raised_by}}</ion-label>
+    </ion-item>
+    <ion-item>  
+      <ion-label>Date:</ion-label>
+      <ion-label>{{Details.Date}}</ion-label>
+    </ion-item>
+
+ 
+</ion-content>

@@ -1,0 +1,255 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Ionic table
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <table class="table table-striped ion-margin">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Country</th>
+        <th scope="col">Area</th>
+        <th scope="col">Population</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of show index as i">
+        <td scope="row">{{ i + 1 }}</td>
+        <td>
+         
+          {{ country.created_dt }}
+        </td>
+        <td>{{ country.title  }}</td>
+        <td>{{ country.content  }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>
+
+
+
+
+import { NgxPaginationModule } from 'ngx-pagination'; // At the top of your module
+
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { NotificationsPageRoutingModule } from './notifications-routing.module';
+import { NotificationsPage } from './notifications.page';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    NgxPaginationModule,
+    IonicModule,
+    NotificationsPageRoutingModule,
+    NgxDatatableModule
+
+  ],
+  declarations: [NotificationsPage],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
+})
+export class NotificationsPageModule {}
+
+
+
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+import { StorageService } from 'src/app/services/storage.service';
+interface apiData {
+  title: string;
+  created_dt: string;
+  content: string;}
+
+
+
+
+@Component({
+  selector: 'app-notifications',
+  templateUrl: './notifications.page.html',
+  styleUrls: ['./notifications.page.scss'],
+})
+export class NotificationsPage  {
+  totalLength:number;
+  page:number=1;
+
+
+  show:apiData[];
+  public col: any;
+  public rows: any;
+  notify: any;
+  as: any;
+  url="https://support.openwingsit.com/api/v1/";
+
+  constructor(
+    private httpClient: HttpClient
+  ) {
+    this.col = [
+      { name: '' },
+      { name: 'created_dt' },
+      { name: 'title' }
+    ];
+  this.notifications();
+  }
+  notifications() { 
+
+
+    let header = new HttpHeaders({
+      "Accept":'application/json',
+      'Content-Type':'application/json',
+      'Authorization': "8e87d5eb0303db28d461eb01db587511      "
+    }); 
+    let options = { headers: header }
+    let deviceData = {  
+      req: {
+        "page":1,
+        "numRecs":20
+      }
+    }
+     return this.httpClient.post(this.url+"getNotifications", deviceData ,options).subscribe(res=>{  
+       this.notify=res;
+      this.rows=this.notify.data
+      this.show=this.rows
+      this.totalLength=this.rows.length;
+
+      console.log(this.rows)
+    })
+    //subscribe(res=>{
+    
+  
+  }
+}
+
+     <ion-header class="grad_back">
+  <div class="btn_flex">
+
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-avatar slot="end">
+      <img src="https://appvital.com/images/profile/file-uploader-api-profile-avatar-2.jpg" />
+    </ion-avatar>
+  </div>
+  <div    >
+    <ion-card class="progresss">
+     
+    <circle-progress [percent]="70"  [space]="-10" [radius]="60" [outerStrokeWidth]="10"
+      [innerStrokeWidth]="10" [outerStrokeColor]="'#4882c2'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+      [animationDuration]="1000"></circle-progress>
+     </ion-card>
+  </div>
+
+</ion-header>
+<apx-chart class="box"
+[series]="chartOptions.series"
+[chart]="chartOptions.chart"
+[plotOptions]="chartOptions.plotOptions"
+[labels]="chartOptions.labels"
+[legend]="chartOptions.legend"
+[colors]="chartOptions.colors"
+[responsive]="chartOptions.responsive"
+></apx-chart>
+
+<ion-content>
+
+ 
+     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addNewItem()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>  
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <ion-header class="grad_back">
+      <div class="btn_flex">
+    
+        <ion-buttons slot="start">
+          <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+        <ion-avatar slot="end">
+          <img src="https://appvital.com/images/profile/file-uploader-api-profile-avatar-2.jpg" />
+        </ion-avatar>
+      </div>
+      <div    >
+        <ion-card class="bar1">
+          
+          <div class="bar">
+          
+            <apx-chart class="box"
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [plotOptions]="chartOptions.plotOptions"
+            [labels]="chartOptions.labels"
+            [legend]="chartOptions.legend"
+            [colors]="chartOptions.colors"
+            [responsive]="chartOptions.responsive"
+            ></apx-chart>
+          </div>
+  
+         </ion-card>
+      </div>
+    
+    </ion-header>
+
+    <ion-content>
+    <div class="container" *ngFor="let item of ticketsData"> 
+    <ion-item lines="none">
+      <ion-grid>
+        <ion-row class="ion-align-items-center"> 
+        <ion-col size="10">
+          <ion-label>
+							<h4 >{{item.name}}</h4>
+							<h6>{{item.description}}</h6>
+              <h6>{{item.status_id}}</h6>
+						</ion-label>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="light" (click)="getInfo(item.name,item.description,item.status_id,item.raised_by,item.created_dt)" fill="clear">
+              <ion-icon slot="icon-only"  name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>      
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>
+    
+     
+         <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button (click)="addNewItem()">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>  
+    </ion-content>
+    

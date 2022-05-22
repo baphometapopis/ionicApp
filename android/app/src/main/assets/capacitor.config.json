@@ -1,0 +1,6 @@
+{
+	"appId": "com.baphomet.push",
+	"appName": "sample",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,0 +1,301 @@
+ <ion-list>
+      <ion-segment  (ionChange)="segmentChanged($event)" [(ngModel)]="type" >
+
+        <ion-segment-button value="All" layout="icon-start">
+          <ion-label>All requests</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Self" layout="icon-start">
+          <ion-label>your request</ion-label>
+        </ion-segment-button>
+      
+      </ion-segment>
+      <div [ngSwitch]="type">
+        <ion-list *ngSwitchCase="'All'">
+          <ion-item class="card_div" *ngFor="let item of ticketsData">
+            <div class="content_div">        
+            <ion-label class="title_lbl">{{item.name}}</ion-label>
+           <ion-label class="small_lbl">{{item.description}}</ion-label>
+          <ion-progress-bar class="progress_lbl"  value="50/100"></ion-progress-bar>
+          <ion-label class="date_lbl">{{item.created_dt}}</ion-label>
+          </div>
+          </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'Self'">
+          <ion-item class="card_div" *ngFor="let item of ticketsData">
+            <div class="content_div">        
+            <ion-label class="title_lbl">{{item.name}}</ion-label>
+           <ion-label class="small_lbl">{{item.description}}</ion-label>
+          <ion-progress-bar class="progress_lbl"  value="50/100"></ion-progress-bar>
+          <ion-label class="date_lbl">{{item.created_dt}}</ion-label>
+          </div>
+          </ion-item>
+        </ion-list>
+    
+        
+      </div>
+     </ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+     <ion-header class="grad_back">
+  <div class="btn_flex">
+
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-avatar slot="end">
+      <img src="https://appvital.com/images/profile/file-uploader-api-profile-avatar-2.jpg" />
+    </ion-avatar>
+  </div>
+
+</ion-header>
+<ion-segment value="All"   mode="md" (ionChange)="segmentChanged($event)" >
+  <ion-segment-button value="All">
+    <ion-label>All</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="Self">
+    <ion-label>self</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<ion-content>
+  <div class="card_daiv" *ngFor="let item of ticketsData">
+
+  <ion-card>
+
+  <ion-card-content>
+
+    <span *ngIf="segId=='All'">
+       <ion-label class="title_lbl">{{item.name}}</ion-label><br>
+      <ion-label class="small_lbl">{{item.description}}</ion-label>
+     <ion-progress-bar class="progress_lbl"  value="50/100"></ion-progress-bar>
+     <ion-label class="date_lbl">{{item.created_dt}}</ion-label>
+  </span>  
+
+  
+
+</ion-card-content>
+</ion-card>
+</div>
+
+    
+
+     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addNewItem()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>  
+</ion-content>
+
+
+
+
+    <ion-item   lines="none">
+      <div *ngFor="let item of ticketsData">
+      <span *ngIf="segId=='All'">
+
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="3">
+            <ion-button color="light" fill="clear">
+              <ion-icon slot="icon-only" name="document"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="7">
+            <ion-label >sasdad</ion-label><br>
+
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="light" fill="clear">
+              <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      </span>
+      </div>
+    </ion-item>
+
+segmentChanged(ev: any) {
+    this.segId=ev.detail.value;
+    if(ev.detail.value=="All")
+    {
+      this.getAllTickets();
+    }
+    else
+    {
+    }
+
+<ion-segment value="All"   mode="md" (ionChange)="segmentChanged($event)" >
+  <ion-segment-button value="All">
+    <ion-label>All</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="Self">
+    <ion-label>self</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+
+
+
+
+
+
+
+
+
+
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+	</ion-toolbar>
+
+	<ion-item lines="none">
+
+		<ion-avatar slot="start">
+			<img src="https://appvital.com/images/profile/file-uploader-api-profile-avatar-2.jpg">
+    </ion-avatar>
+			<ion-label>
+				<p>Hello,</p>
+				<h3>{{this.username}}</h3>
+			</ion-label>
+
+    
+
+
+	</ion-item>
+  <ion-card class="container">
+
+    <ion-card-content>
+   
+    <div   align="left" >
+     
+    <circle-progress [percent]="70"  [space]="-10" [radius]="60" [outerStrokeWidth]="10"
+      [innerStrokeWidth]="10" [outerStrokeColor]="'#4882c2'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+      [animationDuration]="1000"></circle-progress>
+      <circle-progress [percent]="70" ></circle-progress>
+      <circle-progress [percent]="70" ></circle-progress>
+  </div>
+</ion-card-content>
+</ion-card>
+
+
+</ion-header>
+
+
+<ion-content>
+  <div class="container" *ngFor="let item of ticketsData">
+
+  <ion-card>
+
+  <ion-card-content>
+
+  
+       <ion-label class="title_lbl">{{item.name}}</ion-label><br>
+      <ion-label class="small_lbl">{{item.description}}</ion-label>
+      <ion-label class="small_lbl">{{item.status_id}}</ion-label>
+
+      <div class="progressbar" >
+        <div class="progress" [style.width]="width" id="progress"></div>        
+        <div  [class]="this.updateProgress(item.status_id)" data-title="open"></div>
+        <div class="progress-step progress-step-active" data-title="in progress"></div>
+        <div class="progress-step" data-title="review"></div>
+        <div class="progress-step" data-title="close"></div>
+      </div>
+     <ion-label class="date_lbl">{{item.created_dt}}</ion-label>
+
+  
+
+</ion-card-content>
+</ion-card>
+</div>
+
+    
+
+     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addNewItem()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>  
+</ion-content>
+
+   <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">username</ion-label>
+        <ion-input [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <ion-button (click)="send()" expand="block" fill="outline">login</ion-button>
+      <br />
+      <br />
+    </ion-card-content>
+
+
+
+
+
+
+
+
+     <div class="slides ion-margin-bottom">
+    <ion-slides [options]="slidesOptions">
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>         
+            <circle-progress [percent]="cHigh" [space]="-5" [radius]="40" [outerStrokeWidth]="5"
+            [innerStrokeWidth]="5" [outerStrokeColor]="'#4882c2'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+            [animationDuration]="1000"></circle-progress>
+            <circle-progress [percent]="70"  [space]="-5" [radius]="40" [outerStrokeWidth]="5"
+            [innerStrokeWidth]="5" [outerStrokeColor]="'#4882c2'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+            [animationDuration]="1000"></circle-progress>
+            <circle-progress [percent]="70"  [space]="-5" [radius]="40" [outerStrokeWidth]="5"
+            [innerStrokeWidth]="5" [outerStrokeColor]="'#4882c2'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+            [animationDuration]="1000"></circle-progress>           
+            </ion-card-header>
+          <ion-card-content class="ion-text-left">\
+            <ion-button (click)="count()">click</ion-button>
+            <ion-card-title class="ion-margin-bottom">D</ion-card-title>
+            <ion-card-subtitle class="ion-text-right">1</ion-card-subtitle>
+            <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="container" *ngFor="let item of ticketsData"> 
+    <ion-item lines="none">
+      <ion-grid>
+        <ion-row class="ion-align-items-center"> 
+        <ion-col size="10">
+          <ion-label>
+							<h4 >{{item.name}}</h4>
+							<h6>{{item.description}}</h6>
+              <h6>{{item.status_id}}</h6>
+						</ion-label>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="light" (click)="getInfo(item.name,item.description,item.status_id,item.raised_by,item.created_dt)" fill="clear">
+              <ion-icon slot="icon-only"  name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>      
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>

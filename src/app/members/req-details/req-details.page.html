@@ -1,0 +1,40 @@
+<div class="container"><ion-header class="ion-no-border">
+  <ion-toolbar >
+    <ion-title>Add new task</ion-title>
+    <ion-icon name="close" slot="end" size="larger" class="ion-padding" (click)="dismis()"></ion-icon>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content >
+  <ion-card class="ion-align-self-center" >
+    <ion-item>
+      <ion-input [(ngModel)]="taskName"  placeholder="Title"></ion-input>
+   </ion-item>
+ 
+  
+    <ion-item>
+      <ion-textarea [(ngModel)]="taskDesc"  placeholder="Description"></ion-textarea>
+   </ion-item>
+ 
+   <ion-item>
+     <ion-label >Priority</ion-label>
+     <ion-select [(ngModel)]="taskPriority">
+       <ion-select-option value="3">Low</ion-select-option>
+       <ion-select-option value="2">Medium</ion-select-option>
+       <ion-select-option value="1">High</ion-select-option>
+      </ion-select>
+   </ion-item>   
+
+   
+ 
+
+
+   <ion-button class="ion-margin" expand="block" (click)="addTickets()">Add Task</ion-button>
+
+  </ion-card>
+ 
+
+
+</ion-content>
+</div>

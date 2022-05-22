@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "463583225231",
+    "project_id": "push-notification-1e422",
+    "storage_bucket": "push-notification-1e422.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463583225231:android:cb16155804160595cb17fa",
+        "android_client_info": {
+          "package_name": "com.baphomet.push"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463583225231-9bseimbhjt8dv00nbd8v8uv058lad1de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmIazGE4iCYk7s13M5_WDWr03yAwAExL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463583225231-9bseimbhjt8dv00nbd8v8uv058lad1de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,88 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light" autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-center"color="light">Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="getAllTickets($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="slides ion-margin-bottom">
+    <ion-slides [options]="slidesOptions">
+      <ion-slide>
+        <ion-card class="bar">
+          <ion-card-header>
+            
+            <apx-chart class="box"
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [plotOptions]="chartOptions.plotOptions"
+            [labels]="chartOptions.labels"
+            [legend]="chartOptions.legend"
+            [colors]="chartOptions.colors"
+            [responsive]="chartOptions.responsive"
+            ></apx-chart>          </ion-card-header>
+         
+        </ion-card>
+      </ion-slide> 
+     </ion-slides>
+  </div>
+
+
+  <div *ngFor="let item of ticketsData"> 
+    <ion-card  >
+      <ion-card-content (click)="getInfo(item.name,item.description,item.status_id,item.raised_by,item.created_dt)">
+     <!--   <card-title >{{ item.status_id }}</card-title>-->
+
+        <card-title class="title_lbl">{{ item.name}}</card-title>
+        <p class="small_lbl">{{ item.description }}</p>
+        
+
+      <b></b>
+      
+            
+       
+
+        <div>
+      <div style="float: right" class="time_lbl">{{item.created_dt|date: "shortTime"}}&nbsp;&nbsp;</div>
+
+          <div style="float: right" class="date_lbl">{{item.created_dt|date: "dd MMM YYYY "}}</div>
+          </div>
+        </ion-card-content>
+    </ion-card>
+  </div>
+<!--
+    <div class="container" *ngFor="let item of ticketsData"> 
+    <ion-item lines="none">
+      <ion-grid>
+        <ion-row class="ion-align-items-center"> 
+        <ion-col size="10">
+          <ion-label>
+							<h4 >{{item.name}}</h4>
+							<h6>{{item.description}}</h6>
+              <h6>{{item.status_id}}</h6>
+						</ion-label>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="dark" (click)="getInfo(item.name,item.description,item.status_id,item.raised_by,item.created_dt)" fill="clear">
+              <ion-icon slot="icon-only"  name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>      
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>-->
+    
+     
+         <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button (click)="addNewItem()">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>  
+    </ion-content>
+    

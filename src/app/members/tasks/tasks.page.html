@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Request Raised</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="notification($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngFor="let data of ticketsData">
+    <ion-card >
+      <ion-card-content>
+        <card-title >{{ data.name }}</card-title>
+
+        <card-title class="title_lbl">{{ data.title}}</card-title>
+        <p class="small_lbl">{{ data.description }}</p>       
+        <p class="small_lbl">{{ data.raised_by}}</p>                      
+               
+        <div>
+      <div style="float: right" class="time_lbl">{{data.created_dt|date: "shortTime"}}&nbsp;&nbsp;</div>
+
+          <div style="float: right" class="date_lbl">{{data.created_dt|date: "dd MMM YYYY "}}</div>
+          </div>
+        </ion-card-content>
+    </ion-card>
+  </div>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</ion-content>
